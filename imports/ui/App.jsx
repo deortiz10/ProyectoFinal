@@ -23,9 +23,10 @@ import { Template } from 'meteor/templating';
                  <form className="climate-form" onSubmit={this.Climate.bind(this)} >
                  <div className="form-group">
                   <label for="city">Ciudad:</label>
-                  <input type="text" className="form-control" id="city"/>
-                  </div>
+                  <input type="text" className="form-control" id="city" ref="city"/>
                      <button type="submit" className="btn info">Get conditions </button>
+                  </div>
+
                  </form>
                  <br/>
                  {this.warning()}
@@ -49,7 +50,8 @@ import { Template } from 'meteor/templating';
      Climate(event) {
          event.preventDefault();
          const text1 = ReactDOM.findDOMNode(this.refs.city).value.trim();
-         query = text1
+         query = text1;
+         console.log("entro evento");
          console.log(query);
          if(query != ""){
           Meteor.call("accuweather.conditions", query, (err, res)=> {

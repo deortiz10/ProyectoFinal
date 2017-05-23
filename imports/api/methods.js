@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import  Wunderground from 'wunderground-api';
+//import  Wunderground from 'wunderground-api';
 import Accuweather from 'node-accuweather';
 
 //var Wunderground = require('wunderground-api');
@@ -11,7 +11,7 @@ Meteor.methods({
     'accuweather.conditions'(query){
         console.log("buscando lugar..");
         var code;
-        let myAccuweather = Accuweather()('FPFMtLTTFaQfO2Z2CWK5QrGh1xRgMQ7y');
+        let myAccuweather = Accuweather()('');
         myAccuweather.queryLocations(query).then(function(result) {
           for(var i = 0; i<result.length; i++){
             if(result[i].Country.LocalizedName == 'Colombia'){
