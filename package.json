@@ -7,9 +7,8 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "meteor-node-stubs": "~0.2.4",
-    "node-weatherunderground": "^1.2.0",
+    "node-accuweather": "^1.7.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "wunderground-api": "^1.1.4"
+    "react-dom": "^15.5.4"
   }
 }

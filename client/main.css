@@ -1,1 +1,10 @@
 /* CSS declarations go here */
+.header{
+  background-color: rgb(25,46,114);
+  height: 100px;
+}
+h1{
+  text-align: center;
+  font-style: normal;
+  color: white;
+}
