@@ -8,7 +8,9 @@
     "babel-runtime": "^6.23.0",
     "meteor-node-stubs": "~0.2.4",
     "node-accuweather": "^1.7.0",
+    "node-yelp-api-v3": "^1.0.1",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-mounter": "^1.2.0"
   }
 }

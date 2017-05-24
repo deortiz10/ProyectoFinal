@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-
+import Log from './log.jsx';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 // App component - represents the whole app
  class App extends Component {
 
@@ -20,6 +21,14 @@ import { Template } from 'meteor/templating';
                  <header>
                      <h1>Todo List</h1>
                  </header>
+                 <div>
+                    <form className="yelp-form" onSubmit={this.lookPlaces.bind(this)}>
+                      <button type="submit" className="btn info">Get yelp </button>
+                    </form>
+                    <form className="log-form" onSubmit={this.log.bind(this)}>
+                      <button type="submit" className="btn info">log page </button>
+                    </form>
+                 </div>
                  <form className="climate-form" onSubmit={this.Climate.bind(this)} >
                  <div className="form-group">
                   <label for="city">Ciudad:</label>
@@ -61,11 +70,31 @@ import { Template } from 'meteor/templating';
               }
                   console.log(res.results);
           })
+
          }else{
          this.setState({vacio:1});
          }
 
 
+     }
+     lookPlaces(event)
+     {
+        console.log("entro evento");
+       event.preventDefault();
+         Meteor.call("yelp.search", (err,resp)=> {
+           if (err)
+           {
+             console.log(err);
+           }
+         });
+     }
+
+     log(event)
+     {
+        event.preventDefault();
+        return (
+          <Log/>
+        );
      }
  }
 export default App;
