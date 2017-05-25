@@ -11,7 +11,7 @@ Meteor.methods({
     'accuweather.conditions'(query){
         console.log("buscando lugar..");
         var code;
-        let myAccuweather = Accuweather()('ZLoZnu6Ttog2rbMFgwy3FZcGAoxrmtFP');
+        let myAccuweather = Accuweather()('');
         myAccuweather.queryLocations(query).then(function(result) {
           for(var i = 0; i<result.length; i++){
             if(result[i].Country.LocalizedName == 'United States'){
@@ -30,8 +30,8 @@ Meteor.methods({
 
     'yelp.search'(){
       const yelp = new Yelp({
-        consumer_key: "VMhGW_OQO-Vy3lGEUfVZzw",
-        consumer_secret: "rBAC9VxGOb9AZnAzuOIbNrYOoiKl1ag05fyUr18Eeo63TeoRN5KtcN2epQhMufvD"
+        consumer_key: "",
+        consumer_secret: ""
     });
       //  yelp.searchBusiness(params);
       yelp.searchBusiness({ location: '4.699924, -74.057029',term: 'ice cream' })
