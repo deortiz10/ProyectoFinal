@@ -11,7 +11,7 @@ h1{
   color: white !important;
 }
 #imagen{
-  height: 500px;
+  height: 300px;
   background-image: url('https://c2.staticflickr.com/4/3929/19158945206_86a95180c7_h.jpg');
    background-repeat: no-repeat;
    background-attachment: fixed;

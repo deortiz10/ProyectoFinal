@@ -32,7 +32,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
              <div className="container">
                  <form className="climate-form" onSubmit={this.Climate.bind(this)} >
                  <div className="form-group">
-                  <label for="city">Ciudad:</label>
+                <label for="city">Ciudad:</label>
                   <input type="text" className="form-control" id="city" ref="city"/>
                      <button type="submit" className="btn info"> find chilax </button>
                   </div>
