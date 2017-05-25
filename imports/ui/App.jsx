@@ -25,6 +25,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
                     <form className="yelp-form" onSubmit={this.lookPlaces.bind(this)}>
                       <button type="submit" className="btn info">Get yelp </button>
                     </form>
+                    <form className="near-form" onSubmit={this.places.bind(this)}>
+                      <button type="submit" className="btn info">Get places </button>
+                    </form>
                     <form className="log-form" onSubmit={this.log.bind(this)}>
                       <button type="submit" className="btn info">log page </button>
                     </form>
@@ -69,7 +72,15 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
                   console.log(err);
               }
                   console.log(res.results);
-          })
+          });
+          console.log("BUSCA CIUDADES CERCANAS")
+          Meteor.call("geo.search", query, (err, res)=> {
+              if (err)
+              {
+                  console.log(err);
+              }
+                  console.log(res);
+          });
 
          }else{
          this.setState({vacio:1});
@@ -87,6 +98,22 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
              console.log(err);
            }
          });
+     }
+
+     places(event)
+     {
+       var city="dummy";
+       Meteor.call("geo.search", city, (err, res)=> {
+           if (err)
+           {
+               console.log(err);
+           }
+           else {
+              console.log(res);
+           }
+
+       });
+
      }
 
      log(event)

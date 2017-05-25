@@ -1,9 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
+
+
 //import  Wunderground from 'wunderground-api';
 import Accuweather from 'node-accuweather';
 const Yelp = require('node-yelp-api-v3');
+const geo = require('geosearch');
 
+const getJSON = require('get-json');
 //var Wunderground = require('wunderground-api');
 //var client = new Wunderground('');
 
@@ -38,6 +42,18 @@ Meteor.methods({
 
     //  yelp.searchBusiness(params);
  yelp.searchBusiness({ location: '4.699924, -74.057029',term: 'ice cream' }).then((results) => console.log(results));
+
+
+    },
+
+    'geo.search'(city){
+      console.log("ENRO AL METODO");
+
+getJSON("http://getnearbycities.geobytes.com/GetNearbyCities?callback=?&radius=100&locationcode=USCASFRA", function(error, response){
+  console.log(error);
+  console.log(response);
+})
+
 
 
     }
