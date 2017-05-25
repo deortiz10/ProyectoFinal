@@ -42,34 +42,42 @@ Meteor.methods({
 
     'geo.search'(city, callback){
       console.log("ENTRO AL METODO");
-      var respuesta = [];
-      getJSON("http://getnearbycities.geobytes.com/GetNearbyCities?callback=?&radius=100&locationcode="+city,
-      function(error, response){
-        if(error){
-          console.log(error);
-        }
-        resp = response.substr(3);
-        resp2 =resp.slice(0, -3);
-        arreglos = resp.split(']');
-        for ( var i = 0; i < arreglos.length ; i++ ){
-            var temp = arreglos[i].split(',');
-                var ciudad = new Object();
-                if(temp[2] != undefined || temp[9] != undefined ||temp[9] != undefined ){
-                  var n1 = temp[2].substr(1);
-                  ciudad.name = n1.slice(0, -1);
-                  var l1 = temp[9].substr(1);
-                  ciudad.lat  = l1.slice(0, -1);
-                  var lo1 = temp[11].substr(1);
-                  ciudad.long = lo1.slice(0, -1);
-                  if(i != 0){
-                    respuesta[i]=ciudad;
+
+
+      let resultPromise = new Promise((resolve, reject) => {
+
+        getJSON("http://getnearbycities.geobytes.com/GetNearbyCities?callback=?&radius=100&locationcode="+city,
+        function(error, response){
+          console.log("got response");
+          if(error){
+            console.log(error);
+            reject(error);
+          }
+          let respuesta = [12];
+          console.log(response);
+          resp = response.substr(3);
+          resp2 =resp.slice(0, -3);
+          arreglos = resp.split(']');
+          for ( var i = 0; i < arreglos.length ; i++ ){
+              var temp = arreglos[i].split(',');
+                  var ciudad = new Object();
+                  if(temp[2] != undefined || temp[9] != undefined ||temp[9] != undefined ){
+                    var n1 = temp[2].substr(1);
+                    ciudad.name = n1.slice(0, -1);
+                    var l1 = temp[9].substr(1);
+                    ciudad.lat  = l1.slice(0, -1);
+                    var lo1 = temp[11].substr(1);
+                    ciudad.long = lo1.slice(0, -1);
+                    if(i != 0){
+                      respuesta[i]=ciudad;
+                    }
                   }
-                }
-        }
-        console.log(respuesta);
-        callback();
-      })
-      return respuesta;
+          }
+          console.log(respuesta);
+          resolve(respuesta);
+        })
+      });
+      return resultPromise;
     }
 
 });
