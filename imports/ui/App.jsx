@@ -10,7 +10,14 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
  constructor(props){
    super(props);
    this.state = {
-     vacio:0
+     vacio:0,
+     cercanas:[],
+     partySunny:[],
+     partyCloudy:[],
+     moustlyCloudy:[],
+     cloudy:[],
+     shower:[],
+     heavyThunderstorm:[]
    }
  }
 
@@ -51,21 +58,35 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
          console.log("entro evento");
          console.log(query);
          if(query != ""){
-          // Meteor.call("accuweather.conditions", query, (err, res)=> {
-          //     if (err)
-          //     {
-          //         console.log(err);
-          //     }
-          //         console.log(res.results);
-          // });
 
-          console.log("BUSCA CIUDADES CERCANAS")
-          Meteor.call("geo.search", query, (err, res)=> {
+           Meteor.call("accuweather.conditions", query, (err, res)=> {
+               if (err)
+               {
+                   console.log(err);
+               }
+                  //  console.log(res.results);
+           });
+
+          console.log("Busca ciudades cercanas")
+          Meteor.call("geo.search", query, (err, response)=> {
               if (err)
               {
                   console.log(err);
               }
-                  console.log(res);
+                  var respuesta = response;
+                  this.setState({cercanas:respuesta});
+                  console.log(this.state.cercanas);
+                  for(var i=0; i<respuesta.length; i++)
+                  {
+                    // Meteor.call("accuweather.conditions", respuesta[i].name, (err, res)=> {
+                    //     if (err)
+                    //     {
+                    //         console.log(err);
+                    //     }
+                    //         console.log(res.results);
+                    // });
+                    console.log(i);
+                  }
           });
 
          }else{
