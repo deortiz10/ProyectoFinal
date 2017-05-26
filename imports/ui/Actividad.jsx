@@ -14,7 +14,8 @@ import { Template } from 'meteor/templating';
       categories:[],
       rating:0,
       phone:'',
-      pressed:false
+      pressed:false,
+      city: ''
     }
   }
 
@@ -42,8 +43,10 @@ import { Template } from 'meteor/templating';
     if(this.props.name){
       return(
             <div className="row">
-              <button type="button" className="btn naranja" onClick={this.pressed()}>{this.props.name}<span className="badge">{this.props.rating}</span></button>
+             <form className="climate-form" onSubmit={this.registerSelected.bind(this)} >
+              <button type="submit" className="btn naranja" onClick={this.pressed()}>{this.props.name}<span className="badge">{this.props.rating}</span></button>
               {this.showDetails()}
+              </form>
             </div>
       );
     }else{
@@ -53,6 +56,12 @@ import { Template } from 'meteor/templating';
           </div>
       );
     }
+  }
+
+  registerSelected(event)
+  {
+    event.preventDefault() ;
+    Meteor.call("Busquedas.insert",this.state.ciudad,this.state.categories[0], this.state.name);
   }
 
 }

@@ -41,7 +41,7 @@ import Actividad from './Actividad.jsx';
       // console.log(this.state.listActivities);
       if(this.state.listActivities.length>0){
         return this.state.listActivities.map((a) => (
-              <Actividad name={a.name} url={a.url} imageUrl={a.image_url} categories={a.categories} rating={a.rating} phone={a.phone}/>
+              <Actividad name={a.name} url={a.url} imageUrl={a.image_url} categories={a.categories} rating={a.rating} phone={a.phone} city={this.state.name}/>
              ))
         }
       // return (<Actividad name={'a.name'} url={'a.url'} imageUrl={'a.image_url'} categories={'a.categories'} rating={3.5} phone={'a.phone'}/>);

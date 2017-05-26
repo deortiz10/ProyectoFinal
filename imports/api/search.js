@@ -6,12 +6,14 @@ Meteor.methods({
 
   'Busquedas.insert'(ciudad, categoria, lugar )
   {
+
     Busquedas.insert({
-      ciudad,
-      categoria,
-      lugar,
+      ciudad: ciudad,
+      categoria: categoria,
+      lugar: lugar,
       owner: Meteor.userId(),
       username: Meteor.user().username
-    })
+    });
+    console.log("Inserto");
   }
 })
