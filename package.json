@@ -13,6 +13,7 @@
     "node-accuweather": "^1.7.0",
     "node-yelp-api-v3": "^1.0.1",
     "react": "^15.5.4",
+    "react-addons-pure-render-mixin": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-mounter": "^1.2.0"
   }

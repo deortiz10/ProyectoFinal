@@ -5,7 +5,10 @@ import { Template } from 'meteor/templating';
 import Log from './log.jsx';
 import Clima from './Clima.jsx';
 import Ciudad from './Ciudad.jsx';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+//import { FlowRouter } from 'meteor/kadira:flow-router';
+import { createContainer } from 'meteor/react-meteor-data';
+import {Busquedas} from '../api/search.js';
+import AccountsUIWrapper from './accountsUIWrapper.jsx';
 // App component - represents the whole app
  class App extends Component {
 
@@ -61,6 +64,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
      render() {
          return (
             <div>
+               <AccountsUIWrapper />
              <div className="container">
                  <form className="climate-form" onSubmit={this.Climate.bind(this)} >
                  <div className="form-group">
@@ -182,4 +186,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
             );
         }
  }
-export default App;
+ export default createContainer(() => {
+   return {
+     searches: Busquedas.find({}).fetch(),
+      currentUser: Meteor.user(),
+   };
+ }, App);
