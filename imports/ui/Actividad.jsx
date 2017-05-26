@@ -13,7 +13,16 @@ import { Template } from 'meteor/templating';
       image_url:'',
       categories:[],
       rating:0,
-      phone:''
+      phone:'',
+      pressed:false
+    }
+  }
+
+  pressed(){
+    if(this.state.pressed==true){
+      this.setState({pressed:false});
+    }else{
+      this.setState({pressed:true});
     }
   }
 
@@ -22,7 +31,8 @@ import { Template } from 'meteor/templating';
     if(this.props.name){
       return(
             <div className="row">
-              <button type="button" className="btn flotante amarillo">{this.props.name}<span className="badge">{this.props.rating}</span></button>
+              <button type="button" className="btn naranja" onClick={this.pressed()}>{this.props.name}<span className="badge">{this.props.rating}</span></button>
+              {}
             </div>
       );
     }else{

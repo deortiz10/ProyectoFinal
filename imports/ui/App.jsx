@@ -192,21 +192,27 @@ import AccountsUIWrapper from './accountsUIWrapper.jsx';
          return (
             <div>
                <AccountsUIWrapper />
-             <div className="container">
                  <form className="climate-form" onSubmit={this.Climate.bind(this)} >
                  <div className="form-group">
-                <label for="city">City</label>
-                  <input type="text" className="form-control" id="city" ref="city"/>
-                  <br/>
-                     <button type="submit" className="btn amarillo"> find chilax </button>
+
+                  <div className="col-md-1"></div>
+                  <div className="col-md-10">
+                    <label for="city">City</label>
+                    <input type="text" className="form-control" id="city" ref="city"/>
+                    <br/>
+                    <button type="submit" className="btn amarilloClaro"> find chilax </button>
+                    <br/>
+                    <br/>
+                  </div>
+                  <div className="col-md-1"></div>
+
                   </div>
                  </form>
-                 <br/>
+                 <br/><br/>
                  {this.warning.bind(this)}
                  <p>{this.showList()}</p>
                  <br/>
              </div>
-            </div>
          );
      }
 

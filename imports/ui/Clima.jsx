@@ -52,7 +52,7 @@ import Ciudad from './Ciudad.jsx';
             <div>
               <button type="button" className="btn btn-info flotante" onClick={this.showCities.bind(this)}>{this.props.name} <span className="badge">{this.props.lista.length}</span></button>
               <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-5">
                   {this.printCities()}
                 </div>
               </div>

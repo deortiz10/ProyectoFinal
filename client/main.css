@@ -29,6 +29,11 @@ p, label, button{
    background-position: center;
 }
 
+.amarilloClaro{
+  background-color:rgb(244,223,73);
+  color:rgb(25,46,114);
+}
+
 .amarillo{
   background-color:rgb(245,204,67);
   color:rgb(25,46,114);
@@ -54,6 +59,23 @@ height: 400px;
   float: left;
   width: 150px;
   height: 35px;
+}
+
+.azulOscuro{
+background-color: rgb(29,59,112);
+}
+
+.naranja{
+  padding-bottom: 5px;
+  float: left;
+  text-align: center;
+  background-color: rgb(242,157,53);
+  height: 35px;
+  width: 400px;
+}
+
+#selected{
+  background-color: rgb(29,59,112);
 }
 
 h2{
