@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import Actividad from './Actividad.jsx';
 
  class Ciudad extends Component {
 
@@ -11,7 +12,8 @@ import { Template } from 'meteor/templating';
       name:'',
       lat:'',
       long:'',
-      listActivities:[]
+      listActivities:[],
+      selected:false
     }
   }
 
@@ -21,12 +23,29 @@ import { Template } from 'meteor/templating';
         {
           console.log(err);
         }
-          console.log(res);
-        if(res){
-          this.state.listActivities.push(res);
-          console.log(this.state.listActivities);
+        if(res.businesses){
+          this.setState({listActivities:res.businesses});
         }
     });
+    if(this.state.selected==true){
+      this.setState({selected:false});
+    }else{
+    this.setState({selected:true});
+    }
+
+  }
+
+  showActivities(){
+    if(this.state.selected==true){
+       console.log(this.state.listActivities.length);
+      // console.log(this.state.listActivities);
+      if(this.state.listActivities.length>0){
+        return this.state.listActivities.map((a) => (
+              <Actividad name={a.name} url={a.url} imageUrl={a.image_url} categories={a.categories} rating={a.rating} phone={a.phone}/>
+             ))
+        }
+      // return (<Actividad name={'a.name'} url={'a.url'} imageUrl={'a.image_url'} categories={'a.categories'} rating={3.5} phone={'a.phone'}/>);
+    }
   }
 
   render(){
@@ -34,6 +53,12 @@ import { Template } from 'meteor/templating';
       return(
             <div className="row">
             <button type="button" className="btn flotante amarillo" onClick={this.callActivities.bind(this)}>{this.props.name}</button>
+              <div className="row">
+                <div className="col-md-6"></div>
+                    <div className="col-md-6">
+                    {this.showActivities()}
+                </div>
+              </div>
             </div>
       );
     }else{

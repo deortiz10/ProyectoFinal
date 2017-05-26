@@ -39,8 +39,7 @@ import Ciudad from './Ciudad.jsx';
       return this.props.lista.map((c) => (
             <Ciudad name={c.name} lat={c.lat} long={c.long}/>
            ))
-      //     <Ciudad name='karen' lat='{ciudad.lat}' long='{ciudad.long}'/>
-      // );
+
     }
 }
 
@@ -52,7 +51,11 @@ import Ciudad from './Ciudad.jsx';
       return(
             <div>
               <button type="button" className="btn btn-info flotante" onClick={this.showCities.bind(this)}>{this.props.name} <span className="badge">{this.props.lista.length}</span></button>
-              {this.printCities()}
+              <div className="row">
+                <div className="col-md-2">
+                  {this.printCities()}
+                </div>
+              </div>
             </div>
       );
     }else{

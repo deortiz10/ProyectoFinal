@@ -5,6 +5,7 @@ import { Template } from 'meteor/templating';
 import Log from './log.jsx';
 import Clima from './Clima.jsx';
 import Ciudad from './Ciudad.jsx';
+import Actividad from './Actividad.jsx';
 //import { FlowRouter } from 'meteor/kadira:flow-router';
 import { createContainer } from 'meteor/react-meteor-data';
 import {Busquedas} from '../api/search.js';

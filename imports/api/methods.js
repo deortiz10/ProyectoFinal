@@ -43,7 +43,7 @@ Meteor.methods({
       console.log(lat +" , "+long);
       yelp.searchBusiness({ location: lat, long ,term: 'ice cream' })
         .then((results) =>{
-          //console.log(results);
+          console.log(results);
           resolve(results);
         })
       });
