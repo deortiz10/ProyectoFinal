@@ -46,6 +46,10 @@ Meteor.methods({
           console.log(results);
           resolve(results);
         })
+        if (reject)
+        {
+          console.log(reject);
+        }
       });
         return resultPromise;
     },
