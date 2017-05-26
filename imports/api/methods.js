@@ -14,7 +14,7 @@ Meteor.methods({
         let resultPromise = new Promise((resolve, reject) => {
 
         var code;
-        let myAccuweather = Accuweather()('dcpOy4hXGS5vZAxx5RCJE66Ho762r0Lw');
+        let myAccuweather = Accuweather()('');
         myAccuweather.queryLocations(query).then(function(result) {
           if(result){
           for(var i = 0; i<result.length; i++){
@@ -36,8 +36,8 @@ Meteor.methods({
 
     'yelp.search'(lat,long){
       const yelp = new Yelp({
-        consumer_key: "VMhGW_OQO-Vy3lGEUfVZzw",
-        consumer_secret: "rBAC9VxGOb9AZnAzuOIbNrYOoiKl1ag05fyUr18Eeo63TeoRN5KtcN2epQhMufvD"
+        consumer_key: "",
+        consumer_secret: ""
     });
       let resultPromise = new Promise((resolve, reject) => {
       console.log(lat +" , "+long);

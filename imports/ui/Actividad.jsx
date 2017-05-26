@@ -26,13 +26,24 @@ import { Template } from 'meteor/templating';
     }
   }
 
+  showDetails(){
+    if(this.state.pressed==true){
+    return(
+      <div className="row">
+        <label type="text" className="btn azulOscuro">{this.props.name}</label>
+        <img src={this.props.imageUrl} alt="imgURL"/>
+      </div>
+      );
+    }
+  }
+
 
   render(){
     if(this.props.name){
       return(
             <div className="row">
               <button type="button" className="btn naranja" onClick={this.pressed()}>{this.props.name}<span className="badge">{this.props.rating}</span></button>
-              {}
+              {this.showDetails()}
             </div>
       );
     }else{
