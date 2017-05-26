@@ -43,7 +43,7 @@ Meteor.methods({
       console.log(lat +" , "+long);
       yelp.searchBusiness({ location: lat, long ,term: 'ice cream' })
         .then((results) =>{
-          console.log(results);
+          //console.log(results);
           resolve(results);
         })
       });
@@ -64,7 +64,7 @@ Meteor.methods({
             reject(error);
           }
           let respuesta = [12];
-          console.log(response);
+          //console.log(response);
           resp = response.substr(3);
           resp2 =resp.slice(0, -3);
           arreglos = resp.split(']');
@@ -83,7 +83,7 @@ Meteor.methods({
                     }
                   }
           }
-          console.log(respuesta);
+          //console.log(respuesta);
           resolve(respuesta);
         })
       });

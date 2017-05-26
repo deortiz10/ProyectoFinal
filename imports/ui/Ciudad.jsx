@@ -10,16 +10,30 @@ import { Template } from 'meteor/templating';
     this.state = {
       name:'',
       lat:'',
-      long:''
+      long:'',
+      listActivities:[]
     }
+  }
+
+  callActivities(){
+    Meteor.call("yelp.search",this.props.lat,this.props.long,(err,res)=> {
+        if (err)
+        {
+          console.log(err);
+        }
+          console.log(res);
+        if(res){
+          this.state.listActivities.push(res);
+          console.log(this.state.listActivities);
+        }
+    });
   }
 
   render(){
     if(this.props.name){
       return(
-            <div>
-            <h1>Ciudad</h1>
-            <h2>{this.props.name}</h2>
+            <div className="row">
+            <button type="button" className="btn flotante amarillo" onClick={this.callActivities.bind(this)}>{this.props.name}</button>
             </div>
       );
     }else{

@@ -11,17 +11,19 @@ import Ciudad from './Ciudad.jsx';
   super(props);
     this.state={
       cities:[],
-      print:0
+      print:false
     }
   }
 
   showCities(){
     console.log("entra a showcities");
-    this.state.print = 1;
+    if(this.state.print==true){
+        this.setState({print:false});
+    }else{
+        this.setState({print:true});
+    }
+    console.log(this.state.print);
     return (
-      //   this.props.lista.map((ciudad) => {
-      //   <Ciudad key= {ciudad.itemId} name={ciudad.name} lat={ciudad.lat} long={ciudad.long}/>
-      // })
       <div>
         <h1>hola</h1>
       </div>
@@ -29,30 +31,27 @@ import Ciudad from './Ciudad.jsx';
   }
 
   printCities(){
-    console.log("entra a printcities");
-    console.log(this.props.lista.length);
-    return(
-          this.props.lista.map((ciudad) => {
-          <Ciudad key= {ciudad.itemId} name={ciudad.name} lat={ciudad.lat} long={ciudad.long}/>
-         })
-    )
-
+    console.log(this.state.print);
+    if(this.state.print==true){
+      console.log("entra a printcities");
+      console.log(this.props.lista.length);
+      // return(
+      return this.props.lista.map((c) => (
+            <Ciudad name={c.name} lat={c.lat} long={c.long}/>
+           ))
+      //     <Ciudad name='karen' lat='{ciudad.lat}' long='{ciudad.long}'/>
+      // );
+    }
 }
 
-  renderIcon(){
-   console.log("came here")
-   return(
-     <div>Function called</div>
-   )
- }
 
 
 
   render(){
-    if(this.props.name && this.state.cities){
+    if(this.props.name && this.props.lista){
       return(
             <div>
-              <button type="button" className="btn btn-info flotante" onClick={this.showCities.bind(this)}>{this.props.name} <span className="badge">{this.state.cities.length}</span></button>
+              <button type="button" className="btn btn-info flotante" onClick={this.showCities.bind(this)}>{this.props.name} <span className="badge">{this.props.lista.length}</span></button>
               {this.printCities()}
             </div>
       );
